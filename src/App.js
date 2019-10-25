@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { HashRouter, Route, Link } from "react-router-dom";
 import './App.css';
 import web3 from './Web3';
 import ipfs from './Ipfs';
@@ -73,49 +74,51 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1>Lilly Picture Contest!</h1>
-        </header>
+      <HashRouter basename='/'>
+        <div className="App">
+          <header className="App-header">
+            <h1>Lilly Picture Contest!</h1>
+          </header>
 
-        <hr />
-        <grid>
-          <h3> Choose file to send to IPFS </h3>
-          <form onSubmit={this.onSubmit}>
-            <input type="file" onChange={this.captureFile} />
-            <Button bsStyle="primary" type="submit">      Send it             </Button>
-          </form>
           <hr />
-          <Button onClick={this.onClick}> Get Transaction Receipt </Button>
-          <hr />
-          <table bordered responsive>
-            <thead>
-              <tr>
-                <th>Tx Receipt Category</th>
-                <th> </th>
-                <th>Values</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>IPFS Hash stored on Ethereum</td>
-                <td> : </td>
-                <td>{this.state.ipfsHash}</td>
-              </tr>
-              <tr>
-                <td>Ethereum Contract Address</td>
-                <td> : </td>
-                <td>{this.state.ethAddress}</td>
-              </tr>
-              <tr>
-                <td>Tx # </td>
-                <td> : </td>
-                <td>{this.state.transactionHash}</td>
-              </tr>
-            </tbody>
-          </table>
-        </grid>
-      </div>);
+          <grid>
+            <h3> Choose file to send to IPFS </h3>
+            <form onSubmit={this.onSubmit}>
+              <input type="file" onChange={this.captureFile} />
+              <Button bsStyle="primary" type="submit">      Send it             </Button>
+            </form>
+            <hr />
+            <Button onClick={this.onClick}> Get Transaction Receipt </Button>
+            <hr />
+            <table bordered responsive>
+              <thead>
+                <tr>
+                  <th>Tx Receipt Category</th>
+                  <th> </th>
+                  <th>Values</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>IPFS Hash stored on Ethereum</td>
+                  <td> : </td>
+                  <td>{this.state.ipfsHash}</td>
+                </tr>
+                <tr>
+                  <td>Ethereum Contract Address</td>
+                  <td> : </td>
+                  <td>{this.state.ethAddress}</td>
+                </tr>
+                <tr>
+                  <td>Tx # </td>
+                  <td> : </td>
+                  <td>{this.state.transactionHash}</td>
+                </tr>
+              </tbody>
+            </table>
+          </grid>
+        </div>
+      </HashRouter>);
   }
 }
 
