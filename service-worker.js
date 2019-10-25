@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/LillyPhotoContest/precache-manifest.3e513578181dac02887067f9448adfb4.js"
+  "/LillyPhotoContest/precache-manifest.3c842ad38113420e7d049ffd645a1e4f.js"
 );
 
 self.addEventListener('message', (event) => {
