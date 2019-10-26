@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "b58": "^4.0.3",
     "bootstrap": "^4.3.1",
     "fs-extra": "^8.1.0",
     "gh-pages": "^2.1.1",
@@ -13,12 +14,14 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "reactstrap": "^8.1.1",
-    "web3": "^1.2.2"
+    "sha3": "^2.0.7",
+    "web3": "^1.2.1",
+    "windows-build-tools": "^5.2.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "firebase deploy",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

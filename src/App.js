@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import web3 from './Web3';
+import bs58 from 'bs58';
 import ipfs from './Ipfs';
 import storehash from './Storehash';
 import { Button } from 'reactstrap';
@@ -61,8 +62,11 @@ class App extends Component {
       //setState by setting ipfsHash to ipfsHash[0].hash        
       this.setState({ ipfsHash: ipfsHash[0].hash });
       // call Ethereum contract method "sendHash" and .send IPFS hash to ethereum contract        
-      //return the transaction hash from the ethereum contract        
-      storehash.methods.setHash(this.state.ipfsHash).send({
+      //return the transaction hash from the ethereum contract      
+      const decoded = bs58.decode(this.state.ipfsHash)
+      const bytesFromBase58 = "0x" + decoded.slice(2).toString('hex')
+      const encodedParam = web3.eth.abi.encodeParameter('bytes32', bytesFromBase58);
+      storehash.methods.submit(encodedParam).send({
         from: accounts[0]
       }, (error, transactionHash) => {
         console.log(transactionHash);
